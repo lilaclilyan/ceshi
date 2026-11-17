@@ -20,7 +20,7 @@
         }
 
         .page {
-            max-width: 900px;   /* ← 原来 720px，改大了 */
+            max-width: 1000px;
             width: 100%;
             margin: 0 auto;
             flex: 1;
@@ -46,7 +46,7 @@
         /* 两个模块左右并排 */
         .modules {
             display: flex;
-            gap: 120px;          /* ← 原来 48px，改大了 */
+            gap: 200px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -79,7 +79,7 @@
             font-size: 15px;
         }
 
-        /* 底部赞助信息 */
+        /* 底部鸣谢赞助 */
         .footer {
             text-align: center;
             font-size: 13px;
@@ -100,36 +100,32 @@
             margin: 0 0 16px;
         }
 
-        .sponsor-contact {
-            margin: 0 0 4px;
-            font-size: 14px;
-            color: #5a4550;
-        }
-
-        .sponsor-contact strong {
-            color: #c2185b;
-        }
-
-        .sponsor-tip {
-            margin: 0 0 20px;
-            font-size: 12px;
-            color: #9a7b86;
-        }
-
-        .sponsor-qr {
-            width: 180px;
-            height: 180px;
-            object-fit: contain;
-            border-radius: 12px;
+        /* 赞助方 logo */
+        .sponsor-logo {
+            max-width: 160px;
+            height: auto;
+            border-radius: 8px;
             background: #fff;
             padding: 8px;
             box-shadow: 0 4px 16px rgba(194, 24, 91, 0.12);
         }
 
-        .sponsor-qr-caption {
-            margin: 8px 0 0;
-            font-size: 12px;
-            color: #9a7b86;
+        .sponsor-name {
+            margin: 10px 0 0;
+            font-size: 14px;
+            font-weight: 700;
+            color: #5a4550;
+        }
+
+        /* 赞助联系方式 */
+        .sponsor-contact {
+            margin: 16px 0 0;
+            font-size: 13px;
+            color: #8a6b76;
+        }
+
+        .sponsor-contact strong {
+            color: #c2185b;
         }
 
         /* 手机屏幕适配 */
@@ -141,7 +137,7 @@
             .modules {
                 flex-direction: column;
                 align-items: center;
-                gap: 32px;       /* 手机上上下间距，保持 32px 不变 */
+                gap: 32px;
             }
             .sponsor-contact {
                 line-height: 2;
@@ -169,20 +165,21 @@
         </div>
     </div>
 
-    <!-- 底部赞助信息 -->
+    <!-- 底部鸣谢赞助 -->
     <footer class="footer">
-        <p class="sponsor-title">支持本站</p >
+        <p class="sponsor-title">鸣谢赞助</p >
         <p class="sponsor-text">
-            如果这个网站对你有帮助，欢迎赞助支持，感谢你的鼓励！
+            感谢以下单位/个人对本网站的支持
         </p >
 
+        <!-- 赞助方 logo：上传 sponsor.png 到和 index.html 同一目录 -->
+        <img class="sponsor-logo" src="sponsor.png" alt="赞助方 Logo">
+        <p class="sponsor-name">XXX 社团 / XXX 同学</p >
+
+        <!-- 赞助联系方式：改成你自己的，不需要的项删掉 -->
         <p class="sponsor-contact">
-            微信：<strong>your_wechat_id</strong>　｜　QQ：<strong>your_qq_number</strong>
+            赞助联系：微信 <strong>your_wechat_id</strong>　｜　邮箱 <strong>your_email@example.com</strong>
         </p >
-        <p class="sponsor-tip">加好友请备注“赞助”</p >
-
-        <img class="sponsor-qr" src="donate.png" alt="赞赏码">
-        <p class="sponsor-qr-caption">扫码赞赏</p >
     </footer>
 </body>
 </html>
