@@ -20,7 +20,7 @@
         }
 
         .page {
-            max-width: 720px;
+            max-width: 900px;   /* ← 原来 720px，改大了 */
             width: 100%;
             margin: 0 auto;
             flex: 1;
@@ -46,7 +46,7 @@
         /* 两个模块左右并排 */
         .modules {
             display: flex;
-            gap: 48px;
+            gap: 120px;          /* ← 原来 48px，改大了 */
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -100,7 +100,6 @@
             margin: 0 0 16px;
         }
 
-        /* 账号信息 */
         .sponsor-contact {
             margin: 0 0 4px;
             font-size: 14px;
@@ -117,7 +116,6 @@
             color: #9a7b86;
         }
 
-        /* 赞赏码图片 */
         .sponsor-qr {
             width: 180px;
             height: 180px;
@@ -143,7 +141,7 @@
             .modules {
                 flex-direction: column;
                 align-items: center;
-                gap: 32px;
+                gap: 32px;       /* 手机上上下间距，保持 32px 不变 */
             }
             .sponsor-contact {
                 line-height: 2;
@@ -159,7 +157,7 @@
         <div class="modules">
             <!-- Post 模块 -->
             <div class="module">
-                <h2><a href="post.html">Post</a ></h2>
+                <h2><a href=" ">Post</a ></h2>
                 <p>发布志愿或社团活动，填写活动信息并展示给其他同学。</p >
             </div>
 
@@ -178,14 +176,12 @@
             如果这个网站对你有帮助，欢迎赞助支持，感谢你的鼓励！
         </p >
 
-        <!-- 账号信息：改成你自己的，不需要的项删掉 -->
         <p class="sponsor-contact">
-            微信：<strong>123456</strong>　｜　QQ：<strong>123456</strong>
+            微信：<strong>your_wechat_id</strong>　｜　QQ：<strong>your_qq_number</strong>
         </p >
         <p class="sponsor-tip">加好友请备注“赞助”</p >
 
-        <!-- 赞赏码图片：上传 donate.png 到和 index.html 同一目录 -->
-        <img class="sponsor-qr" src="donate.png" alt="赞赏码">
+        < img class="sponsor-qr" src="donate.png" alt="赞赏码">
         <p class="sponsor-qr-caption">扫码赞赏</p >
     </footer>
 </body>
