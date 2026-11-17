@@ -1,13 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Post页面</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>发布新活动</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
+body{background:#f7f8fa;padding:20px;}
+.container{max-width:620px;margin:0 auto;background:#fff;border-radius:16px;padding:30px;box-shadow:0 2px 12px #00000010;}
+h2{text-align:center;color:#222;margin-bottom:28px;}
+.form-item{margin-bottom:20px;}
+label{display:block;margin-bottom:8px;color:#444;font-weight:500;}
+input,textarea,select{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:15px;outline:none;transition:0.2s;}
+input:focus,textarea:focus,select:focus{border-color:#6366f1;box-shadow:0 0 0 3px #6366f120;}
+textarea{min-height:110px;resize:vertical;}
+.btn{width:100%;padding:14px;border:none;background:#6366f1;color:#fff;border-radius:10px;font-size:16px;cursor:pointer;transition:0.2s;}
+.btn:hover{background:#4f46e5;}
+.back{display:block;text-align:center;margin-top:20px;color:#6366f1;text-decoration:none;}
+img{width:100%;border-radius:12px;margin:15px 0;}
+</style>
 </head>
 <body>
-    <img src="bg.png">
-    <h1>Post 页面</h1>
-    <p>这里是post的内容，你可以自行修改文字和图片</p>
-    <a href="index.html">返回主页</a>
+<div class="container">
+  <h2>发布新活动</h2>
+  <!-- 网络图片，不用上传文件 -->
+  <img src="https://picsum.photos/id/1060/600/280" alt="活动配图">
+  <form>
+    <div class="form-item">
+      <label>活动名称</label>
+      <input type="text" placeholder="例如：校园读书分享会">
+    </div>
+    <div class="form-item">
+      <label>活动分类</label>
+      <select>
+        <option>文体活动</option>
+        <option>学术讲座</option>
+        <option>志愿实践</option>
+        <option>竞赛比赛</option>
+      </select>
+    </div>
+    <div class="form-item">
+      <label>活动时间</label>
+      <input type="datetime-local">
+    </div>
+    <div class="form-item">
+      <label>活动地点</label>
+      <input type="text" placeholder="教学楼 / 操场 / 线上腾讯会议">
+    </div>
+    <div class="form-item">
+      <label>人数上限</label>
+      <input type="number" placeholder="最多报名人数">
+    </div>
+    <div class="form-item">
+      <label>活动简介</label>
+      <textarea placeholder="简单介绍活动内容、要求"></textarea>
+    </div>
+    <button class="btn">提交发布</button>
+  </form>
+  <a class="back" href="index.html">← 返回首页</a>
+</div>
 </body>
 </html>
