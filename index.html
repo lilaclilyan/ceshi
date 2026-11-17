@@ -13,11 +13,17 @@
             font-family: system-ui, sans-serif;
             line-height: 1.7;
             color: #3d2b33;
+
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
         }
 
         .page {
             max-width: 720px;
+            width: 100%;
             margin: 0 auto;
+            flex: 1;
         }
 
         /* 大粗黑标题 */
@@ -34,20 +40,28 @@
         .subtitle {
             text-align: center;
             color: #7a5a66;
-            margin-bottom: 48px;
+            margin-bottom: 56px;
         }
 
-        /* 两个模块，上下排列，左边一条粉色竖线 */
+        /* 两个模块左右并排 */
+        .modules {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .module {
-            border-left: 4px solid #c2185b;
-            padding: 8px 0 8px 20px;
-            margin-bottom: 36px;
+            flex: 1 1 260px;
+            max-width: 300px;
+            text-align: center;
         }
 
+        /* 链接放大 */
         .module h2 {
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 800;
-            margin: 0 0 6px;
+            margin: 0 0 10px;
         }
 
         .module h2 a {
@@ -65,11 +79,74 @@
             font-size: 15px;
         }
 
-        /* 手机屏幕标题缩小 */
+        /* 底部赞助信息 */
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #8a6b76;
+            padding: 32px 0 24px;
+            margin-top: 64px;
+            border-top: 1px solid rgba(194, 24, 91, 0.15);
+        }
+
+        .sponsor-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #c2185b;
+            margin: 0 0 8px;
+        }
+
+        .sponsor-text {
+            margin: 0 0 16px;
+        }
+
+        /* 账号信息 */
+        .sponsor-contact {
+            margin: 0 0 4px;
+            font-size: 14px;
+            color: #5a4550;
+        }
+
+        .sponsor-contact strong {
+            color: #c2185b;
+        }
+
+        .sponsor-tip {
+            margin: 0 0 20px;
+            font-size: 12px;
+            color: #9a7b86;
+        }
+
+        /* 赞赏码图片 */
+        .sponsor-qr {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #fff;
+            padding: 8px;
+            box-shadow: 0 4px 16px rgba(194, 24, 91, 0.12);
+        }
+
+        .sponsor-qr-caption {
+            margin: 8px 0 0;
+            font-size: 12px;
+            color: #9a7b86;
+        }
+
+        /* 手机屏幕适配 */
         @media (max-width: 640px) {
             .main-title {
                 font-size: 28px;
                 letter-spacing: 1px;
+            }
+            .modules {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+            }
+            .sponsor-contact {
+                line-height: 2;
             }
         }
     </style>
@@ -79,17 +156,37 @@
         <h1 class="main-title">志愿社团活动综合网站</h1>
         <p class="subtitle">发布与搜索志愿、社团活动</p >
 
-        <!-- Post 模块 -->
-        <div class="module">
-            <h2><a href="post.html">Post</a ></h2>
-            <p>发布志愿或社团活动，填写活动信息并展示给其他同学。</p >
-        </div>
+        <div class="modules">
+            <!-- Post 模块 -->
+            <div class="module">
+                <h2><a href="post.html">Post</a ></h2>
+                <p>发布志愿或社团活动，填写活动信息并展示给其他同学。</p >
+            </div>
 
-        <!-- Search 模块 -->
-        <div class="module">
-            <h2><a href="search.html">Search</a ></h2>
-            <p>搜索志愿或社团活动，按关键词快速找到感兴趣的活动。</p >
+            <!-- Search 模块 -->
+            <div class="module">
+                <h2><a href="search.html">Search</a ></h2>
+                <p>搜索志愿或社团活动，按关键词快速找到感兴趣的活动。</p >
+            </div>
         </div>
     </div>
+
+    <!-- 底部赞助信息 -->
+    <footer class="footer">
+        <p class="sponsor-title">支持本站</p >
+        <p class="sponsor-text">
+            如果这个网站对你有帮助，欢迎赞助支持，感谢你的鼓励！
+        </p >
+
+        <!-- 账号信息：改成你自己的，不需要的项删掉 -->
+        <p class="sponsor-contact">
+            微信：<strong>123456</strong>　｜　QQ：<strong>123456</strong>
+        </p >
+        <p class="sponsor-tip">加好友请备注“赞助”</p >
+
+        <!-- 赞赏码图片：上传 donate.png 到和 index.html 同一目录 -->
+        <img class="sponsor-qr" src="donate.png" alt="赞赏码">
+        <p class="sponsor-qr-caption">扫码赞赏</p >
+    </footer>
 </body>
 </html>
