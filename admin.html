@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理系统 - 数据统计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== 左侧侧边栏 ===== */
+        .sidebar {
+            width: 240px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 0;
+            flex-shrink: 0;
+        }
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #333;
+            padding: 0 24px;
+            margin-bottom: 32px;
+        }
+        .menu { display: flex; flex-direction: column; gap: 4px; }
+        .menu-item {
+            padding: 12px 24px;
+            font-size: 15px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .menu-item:hover { background-color: #e9ecef; color: #000; }
+        /* 选中状态 */
+        .menu-item.active {
+            background-color: #e2e8f0;
+            color: #000;
+            font-weight: 700;
+            border-left: 4px solid #4a5568;
+            padding-left: 20px;
+        }
+
+        /* ===== 右侧主内容区 ===== */
+        .main-content {
+            flex: 1;
+            padding: 32px 48px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #1a202c;
+        }
+
+        /* ===== 图表区域 ===== */
+        .charts-container {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+        
+        .chart-box {
+            width: 320px;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fcfcfc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden; /* 防止图片溢出 */
+        }
+        
+        /* 当放入真实图片时，消除虚线框 */
+        .chart-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e9ecef; padding: 16px 0; }
+            .sidebar-title { margin-bottom: 16px; }
+            .menu { flex-direction: row; overflow-x: auto; white-space: nowrap; }
+            .menu-item.active { border-left: none; border-bottom: 3px solid #4a5568; padding-left: 24px; }
+            .main-content { padding: 24px; }
+            .charts-container { flex-direction: column; gap: 32px; }
+            .chart-box { width: 100%; max-width: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 左侧菜单 -->
+    <div class="sidebar">
+        <div class="sidebar-title">后台管理系统</div>
+        <div class="menu">
+            <!-- 这里的 href 指向你的主页面 -->
+            <a href=" " class="menu-item">首页</a >
+            <!-- active 类表示当前高亮 -->
+            <a href="#" class="menu-item active">数据统计</a >
+            <a href="#" class="menu-item">订单</a >
+            <a href="#" class="menu-item">文件</a >
+            <a href="#" class="menu-item">系统设置</a >
+        </div>
+    </div>
+
+    <!-- 右侧内容 -->
+    <div class="main-content">
+        <h1 class="header-title">数据统计</h1>
+
+        <!-- 两个图表并排 -->
+        <div class="charts-container">
+            <!-- 图1：饼图 -->
+            <div class="chart-box">
+                <!-- 上传图片后，把下面这行的 src 换成你的图片名，比如 pie.png -->
+                < img src="chart-pie.png" alt="饼图" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=color:#94a3b8;>饼图占位区</span>';">
+            </div>
+
+            <!-- 图2：柱状图 -->
+            <div class="chart-box">
+                <!-- 上传图片后，把下面这行的 src 换成你的图片名，比如 bar.png -->
+                < img src="chart-bar.png" alt="柱状图" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=color:#94a3b8;>柱状图占位区</span>';">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
