@@ -13,7 +13,6 @@
             font-family: system-ui, sans-serif;
             line-height: 1.7;
             color: #3d2b33;
-
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
@@ -26,7 +25,6 @@
             flex: 1;
         }
 
-        /* 大粗黑标题 */
         .main-title {
             font-size: 40px;
             font-weight: 900;
@@ -43,7 +41,6 @@
             margin-bottom: 56px;
         }
 
-        /* 两个模块左右并排 */
         .modules {
             display: flex;
             gap: 200px;
@@ -57,7 +54,6 @@
             text-align: center;
         }
 
-        /* 链接放大 */
         .module h2 {
             font-size: 32px;
             font-weight: 800;
@@ -77,6 +73,30 @@
             margin: 0;
             color: #5a4550;
             font-size: 15px;
+        }
+
+        /* 新增：后台管理入口按钮 */
+        .admin-link-wrapper {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .admin-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            font-size: 14px;
+            color: #7a5a66;
+            text-decoration: none;
+            border: 1px solid rgba(194, 24, 91, 0.3);
+            border-radius: 20px;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .admin-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #c2185b;
+            border-color: #c2185b;
         }
 
         /* 底部鸣谢赞助 */
@@ -100,7 +120,6 @@
             margin: 0 0 16px;
         }
 
-        /* 赞助方 logo */
         .sponsor-logo {
             max-width: 160px;
             height: auto;
@@ -117,7 +136,6 @@
             color: #5a4550;
         }
 
-        /* 赞助联系方式 */
         .sponsor-contact {
             margin: 16px 0 0;
             font-size: 13px;
@@ -128,20 +146,11 @@
             color: #c2185b;
         }
 
-        /* 手机屏幕适配 */
         @media (max-width: 640px) {
-            .main-title {
-                font-size: 28px;
-                letter-spacing: 1px;
-            }
-            .modules {
-                flex-direction: column;
-                align-items: center;
-                gap: 32px;
-            }
-            .sponsor-contact {
-                line-height: 2;
-            }
+            .main-title { font-size: 28px; letter-spacing: 1px; }
+            .modules { flex-direction: column; align-items: center; gap: 32px; }
+            .sponsor-contact { line-height: 2; }
+            .admin-link-wrapper { margin-top: 50px; }
         }
     </style>
 </head>
@@ -151,32 +160,29 @@
         <p class="subtitle">发布与搜索志愿、社团活动</p >
 
         <div class="modules">
-            <!-- Post 模块 -->
             <div class="module">
-                <h2><a href="post.html">Post</a ></h2>
+                <h2><a href=" ">Post</a ></h2>
                 <p>发布志愿或社团活动，填写活动信息并展示给其他同学。</p >
             </div>
 
-            <!-- Search 模块 -->
             <div class="module">
                 <h2><a href="search.html">Search</a ></h2>
                 <p>搜索志愿或社团活动，按关键词快速找到感兴趣的活动。</p >
             </div>
+        </div>
+
+        <!-- 新增：后台管理入口 -->
+        <div class="admin-link-wrapper">
+            <a href="admin.html" class="admin-btn">进入后台管理系统 →</a >
         </div>
     </div>
 
     <!-- 底部鸣谢赞助 -->
     <footer class="footer">
         <p class="sponsor-title">鸣谢赞助</p >
-        <p class="sponsor-text">
-            感谢以下单位/个人对本网站的支持
-        </p >
-
-        <!-- 赞助方 logo：上传 sponsor.png 到和 index.html 同一目录 -->
-        <img class="sponsor-logo" src="sponsor.png" alt="赞助方 Logo">
+        <p class="sponsor-text">感谢以下单位/个人对本网站的支持</p >
+        < img class="sponsor-logo" src="sponsor.png" alt="赞助方 Logo">
         <p class="sponsor-name">XXX 社团 / XXX 同学</p >
-
-        <!-- 赞助联系方式：改成你自己的，不需要的项删掉 -->
         <p class="sponsor-contact">
             赞助联系：微信 <strong>your_wechat_id</strong>　｜　邮箱 <strong>your_email@example.com</strong>
         </p >
