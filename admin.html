@@ -3,18 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>后台管理系统 - 数据统计</title>
+    <title>后台管理系统 - 登录</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background-color: #ffffff;
             color: #333;
+        }
+
+        /* ================= 登录界面样式 ================= */
+        .login-screen {
             display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f4f7f6; /* 后台常用的浅灰背景 */
+            padding: 20px;
+        }
+
+        .login-box {
+            background: #fff;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .login-box h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #1a202c;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #4a5568;
+        }
+
+        .error-msg {
+            color: #e53e3e;
+            font-size: 13px;
+            margin-bottom: 15px;
+            display: none; /* 默认隐藏 */
+            text-align: center;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #1a202c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #2d3748;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #718096;
+            text-decoration: none;
+        }
+
+        .back-home:hover {
+            color: #1a202c;
+        }
+
+        /* ================= 后台系统布局（登录后显示） ================= */
+        .admin-app {
+            display: none; /* 默认隐藏 */
             min-height: 100vh;
         }
 
-        /* ===== 左侧侧边栏 ===== */
         .sidebar {
             width: 240px;
             background-color: #f8f9fa;
@@ -22,8 +115,12 @@
             display: flex;
             flex-direction: column;
             padding: 24px 0;
-            flex-shrink: 0;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
         }
+
         .sidebar-title {
             font-size: 18px;
             font-weight: 800;
@@ -31,7 +128,14 @@
             padding: 0 24px;
             margin-bottom: 32px;
         }
-        .menu { display: flex; flex-direction: column; gap: 4px; }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
         .menu-item {
             padding: 12px 24px;
             font-size: 15px;
@@ -39,8 +143,9 @@
             text-decoration: none;
             transition: all 0.2s;
         }
+
         .menu-item:hover { background-color: #e9ecef; color: #000; }
-        /* 选中状态 */
+        
         .menu-item.active {
             background-color: #e2e8f0;
             color: #000;
@@ -49,13 +154,26 @@
             padding-left: 20px;
         }
 
-        /* ===== 右侧主内容区 ===== */
-        .main-content {
-            flex: 1;
-            padding: 32px 48px;
-            display: flex;
-            flex-direction: column;
+        .logout-btn {
+            padding: 12px 24px;
+            color: #e53e3e;
+            cursor: pointer;
+            font-size: 14px;
+            border-top: 1px solid #e9ecef;
+            transition: background 0.2s;
         }
+        
+        .logout-btn:hover {
+            background: #fee2e2;
+        }
+
+        /* 右侧主内容区 */
+        .main-content {
+            margin-left: 240px; /* 留出侧边栏的宽度 */
+            padding: 32px 48px;
+            flex: 1;
+        }
+
         .header-title {
             font-size: 24px;
             font-weight: 700;
@@ -63,7 +181,7 @@
             color: #1a202c;
         }
 
-        /* ===== 图表区域 ===== */
+        /* 图表区域 */
         .charts-container {
             display: flex;
             gap: 60px;
@@ -81,10 +199,9 @@
             background-color: #fcfcfc;
             border: 2px dashed #cbd5e1;
             border-radius: 8px;
-            overflow: hidden; /* 防止图片溢出 */
+            overflow: hidden;
         }
         
-        /* 当放入真实图片时，消除虚线框 */
         .chart-box img {
             width: 100%;
             height: 100%;
@@ -94,52 +211,104 @@
 
         /* 手机端适配 */
         @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e9ecef; padding: 16px 0; }
+            .admin-app { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+                padding: 16px 0;
+            }
             .sidebar-title { margin-bottom: 16px; }
             .menu { flex-direction: row; overflow-x: auto; white-space: nowrap; }
             .menu-item.active { border-left: none; border-bottom: 3px solid #4a5568; padding-left: 24px; }
-            .main-content { padding: 24px; }
+            .main-content { margin-left: 0; padding: 24px; }
             .charts-container { flex-direction: column; gap: 32px; }
             .chart-box { width: 100%; max-width: 320px; }
+            .logout-btn { border-top: none; text-align: right; padding-right: 24px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 左侧菜单 -->
-    <div class="sidebar">
-        <div class="sidebar-title">后台管理系统</div>
-        <div class="menu">
-            <!-- 这里的 href 指向你的主页面 -->
-            <a href=" " class="menu-item">首页</a >
-            <!-- active 类表示当前高亮 -->
-            <a href="#" class="menu-item active">数据统计</a >
-            <a href="#" class="menu-item">订单</a >
-            <a href="#" class="menu-item">文件</a >
-            <a href="#" class="menu-item">系统设置</a >
+    <!-- ================= 1. 登录界面 ================= -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-box">
+            <h2>后台登录</h2>
+            <div class="input-group">
+                <label>账号</label>
+                <input type="text" id="username" placeholder="请输入账号">
+            </div>
+            <div class="input-group">
+                <label>密码</label>
+                <input type="password" id="password" placeholder="请输入密码" onkeydown="if(event.key==='Enter') login()">
+            </div>
+            <div id="error-msg" class="error-msg">账号或密码错误，请重试</div>
+            <button class="login-btn" onclick="login()">登 录</button>
+            <a href="index.html" class="back-home">← 返回主页面</a>
         </div>
     </div>
 
-    <!-- 右侧内容 -->
-    <div class="main-content">
-        <h1 class="header-title">数据统计</h1>
-
-        <!-- 两个图表并排 -->
-        <div class="charts-container">
-            <!-- 图1：饼图 -->
-            <div class="chart-box">
-                <!-- 上传图片后，把下面这行的 src 换成你的图片名，比如 pie.png -->
-                < img src="chart-pie.png" alt="饼图" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=color:#94a3b8;>饼图占位区</span>';">
+    <!-- ================= 2. 后台管理界面（默认隐藏） ================= -->
+    <div id="admin-app" class="admin-app" style="display: flex;">
+        <!-- 左侧菜单 -->
+        <div class="sidebar">
+            <div class="sidebar-title">后台管理系统</div>
+            <div class="menu">
+                <a href="index.html" class="menu-item">首页</a>
+                <a href="#" class="menu-item active">数据统计</a>
+                <a href="#" class="menu-item">订单</a>
+                <a href="#" class="menu-item">文件</a>
+                <a href="#" class="menu-item">系统设置</a>
             </div>
+            <!-- 退出登录按钮 -->
+            <div class="logout-btn" onclick="logout()">退出登录</div>
+        </div>
 
-            <!-- 图2：柱状图 -->
-            <div class="chart-box">
-                <!-- 上传图片后，把下面这行的 src 换成你的图片名，比如 bar.png -->
-                < img src="chart-bar.png" alt="柱状图" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=color:#94a3b8;>柱状图占位区</span>';">
+        <!-- 右侧内容 -->
+        <div class="main-content">
+            <h1 class="header-title">数据统计</h1>
+            <div class="charts-container">
+                <div class="chart-box">
+                    <img src="chart-pie.png" alt="饼图" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=color:#94a3b8;>饼图占位区</span>';">
+                </div>
+                <div class="chart-box">
+                    <img src="chart-bar.png" alt="柱状图" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=color:#94a3b8;>柱状图占位区</span>';">
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- ================= 3. 验证逻辑 ================= -->
+    <script>
+        // 在这里修改你的账号和密码
+        const CORRECT_USER = "admin";
+        const CORRECT_PASS = "123456";
+
+        function login() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            if (user === CORRECT_USER && pass === CORRECT_PASS) {
+                // 登录成功，切换界面
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('admin-app').style.display = 'flex';
+                errorMsg.style.display = 'none';
+            } else {
+                // 登录失败，显示错误提示
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function logout() {
+            // 退出登录，切回登录界面并清空输入框
+            document.getElementById('login-screen').style.display = 'flex';
+            document.getElementById('admin-app').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('error-msg').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
