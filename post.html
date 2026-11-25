@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
 body{
-  background:#ffe6f2;
+  background:#ffffff;
   padding:24px;
   min-height:100vh;
 }
@@ -17,11 +17,11 @@ body{
   background:#fff;
   border-radius:18px;
   padding:32px 36px;
-  box-shadow:0 4px 18px rgba(180,90,130,0.12);
+  box-shadow:0 4px 18px rgba(0,0,0,0.08);
 }
 h2{
   text-align:center;
-  color:#b85b7b;
+  color:#222;
   margin-bottom:24px;
 }
 .banner{
@@ -30,7 +30,6 @@ h2{
   margin-bottom:26px;
   object-fit:cover;
 }
-/* 横屏两栏网格 */
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -47,16 +46,16 @@ label{
 input,textarea,select{
   width:100%;
   padding:12px 14px;
-  border:1px solid #e8c6d6;
+  border:1px solid #ddd;
   border-radius:10px;
   font-size:15px;
   outline:none;
   transition:0.2s;
-  background:#fffafc;
+  background:#fff;
 }
 input:focus,textarea:focus,select:focus{
-  border-color:#d978a0;
-  box-shadow:0 0 0 3px rgba(217,120,160,0.18);
+  border-color:#6366f1;
+  box-shadow:0 0 0 3px rgba(99,102,241,0.18);
 }
 textarea{min-height:110px;resize:vertical;}
 .btn{
@@ -64,22 +63,21 @@ textarea{min-height:110px;resize:vertical;}
   margin-top:24px;
   padding:14px;
   border:none;
-  background:#d978a0;
+  background:#6366f1;
   color:#fff;
   border-radius:10px;
   font-size:16px;
   cursor:pointer;
   transition:0.2s;
 }
-.btn:hover{background:#c85f8a;}
+.btn:hover{background:#4f46e5;}
 .back{
   display:block;
   text-align:center;
   margin-top:18px;
-  color:#d978a0;
+  color:#6366f1;
   text-decoration:none;
 }
-/* 窄屏回退单栏 */
 @media (max-width:720px){
   .form-grid{grid-template-columns:1fr;}
 }
@@ -116,7 +114,7 @@ textarea{min-height:110px;resize:vertical;}
         <label>人数上限</label>
         <input type="number" placeholder="最多报名人数">
       </div>
-      <div class="form-item">
+      <div class="form-item full">
         <label>活动简介</label>
         <textarea placeholder="简单介绍活动内容、要求"></textarea>
       </div>
