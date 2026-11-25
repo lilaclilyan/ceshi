@@ -1,128 +1,129 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>发布活动</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
-        body {
-            /* 浅粉色背景 */
-            background-color: #ffe6f2;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background-color: #ffffff;
-            width: 90%;
-            max-width: 1100px;
-            padding: 40px 30px;
-            border-radius: 18px;
-            box-shadow: 0 6px 18px rgba(180, 90, 130, 0.12);
-        }
-        .title-box {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .title {
-            display: inline-block;
-            background-color: #5488e8;
-            color: white;
-            font-size: 26px;
-            padding: 12px 70px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-        .form-row {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .form-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .form-item label {
-            font-size: 20px;
-            color: #444;
-            margin-bottom: 10px;
-        }
-        .form-item input {
-            width: 170px;
-            height: 44px;
-            border: 1.5px solid #b9c8e8;
-            border-radius: 8px;
-            outline: none;
-            font-size: 16px;
-            padding: 0 10px;
-            transition: 0.25s;
-        }
-        .form-item input:focus {
-            border-color: #5488e8;
-            box-shadow: 0 0 0 3px rgba(84, 136, 232, 0.18);
-        }
-        .btn-row {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-        button {
-            background-color: #5488e8;
-            color: white;
-            border: none;
-            font-size: 20px;
-            padding: 12px 42px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-        button:hover {
-            background-color: #3f72d8;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>发布新活动</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif;}
+body{
+  background:#ffe6f2;
+  padding:24px;
+  min-height:100vh;
+}
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  background:#fff;
+  border-radius:18px;
+  padding:32px 36px;
+  box-shadow:0 4px 18px rgba(180,90,130,0.12);
+}
+h2{
+  text-align:center;
+  color:#b85b7b;
+  margin-bottom:24px;
+}
+.banner{
+  width:100%;
+  border-radius:14px;
+  margin-bottom:26px;
+  object-fit:cover;
+}
+/* 横屏两栏网格 */
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px 28px;
+}
+.form-item{margin-bottom:6px;}
+.form-item.full{grid-column:1 / -1;}
+label{
+  display:block;
+  margin-bottom:8px;
+  color:#444;
+  font-weight:500;
+}
+input,textarea,select{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid #e8c6d6;
+  border-radius:10px;
+  font-size:15px;
+  outline:none;
+  transition:0.2s;
+  background:#fffafc;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:#d978a0;
+  box-shadow:0 0 0 3px rgba(217,120,160,0.18);
+}
+textarea{min-height:110px;resize:vertical;}
+.btn{
+  width:100%;
+  margin-top:24px;
+  padding:14px;
+  border:none;
+  background:#d978a0;
+  color:#fff;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.btn:hover{background:#c85f8a;}
+.back{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#d978a0;
+  text-decoration:none;
+}
+/* 窄屏回退单栏 */
+@media (max-width:720px){
+  .form-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="title-box">
-            <div class="title">发布活动</div>
-        </div>
-        <div class="form-row">
-            <div class="form-item">
-                <label>时间</label>
-                <input type="text">
-            </div>
-            <div class="form-item">
-                <label>地点</label>
-                <input type="text">
-            </div>
-            <div class="form-item">
-                <label>举办单位</label>
-                <input type="text">
-            </div>
-            <div class="form-item">
-                <label>活动名称</label>
-                <input type="text">
-            </div>
-            <div class="form-item">
-                <label>活动具体内容</label>
-                <input type="text">
-            </div>
-        </div>
-        <div class="btn-row">
-            <button>提交</button>
-            <button>暂存</button>
-        </div>
+<div class="container">
+  <h2>发布新活动</h2>
+  <img class="banner" src="https://picsum.photos/id/1060/1100/280" alt="活动配图">
+  <form>
+    <div class="form-grid">
+      <div class="form-item">
+        <label>活动名称</label>
+        <input type="text" placeholder="例如：校园读书分享会">
+      </div>
+      <div class="form-item">
+        <label>活动分类</label>
+        <select>
+          <option>文体活动</option>
+          <option>学术讲座</option>
+          <option>志愿实践</option>
+          <option>竞赛比赛</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>活动时间</label>
+        <input type="datetime-local">
+      </div>
+      <div class="form-item">
+        <label>活动地点</label>
+        <input type="text" placeholder="教学楼 / 操场 / 线上腾讯会议">
+      </div>
+      <div class="form-item">
+        <label>人数上限</label>
+        <input type="number" placeholder="最多报名人数">
+      </div>
+      <div class="form-item">
+        <label>活动简介</label>
+        <textarea placeholder="简单介绍活动内容、要求"></textarea>
+      </div>
     </div>
+    <button class="btn">提交发布</button>
+  </form>
+  <a class="back" href="index.html">← 返回首页</a>
+</div>
 </body>
 </html>
